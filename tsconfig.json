@@ -16,12 +16,52 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "baseUrl": "./",
+    "paths": {
+      "@environment": [
+        "src/environments/environment"
+      ],
+      "@common/state": [
+        "src/app/common/state/index.ts"
+      ],
+      "@common/validators": [
+        "src/app/common/validators/index.ts"
+      ],
+      "@common/services": [
+        "src/app/common/services/index.ts"
+      ],
+      "@common/components": [
+        "src/app/common/components/index.ts"
+      ],
+      "@common/directives": [
+        "src/app/common/directives/index.ts"
+      ],
+      "@common/pipes": [
+        "src/app/common/pipes/index.ts"
+      ],
+      "@common/base": [
+        "src/app/common/base/index.ts"
+      ],
+      "@common/schemas": [
+        "src/app/common/schemas/index.ts"
+      ],
+      "@common/interfaces": [
+        "src/app/common/interfaces/index.ts"
+      ],
+      "@common/mocks": [
+        "src/app/common/mocks/index.ts"
+      ],
+      "@app-state": [
+        "src/app/app.state.ts"
+      ],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    
   }
 }
