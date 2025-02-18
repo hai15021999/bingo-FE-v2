@@ -1,0 +1,39 @@
+<div class="w-full h-full overflow-auto flex items-center justify-center z-[10] relative">
+    <div class="flex bg-Grayscale150 gap-[12px] flex-col items-center p-[24px] rounded-[12px] shadow-[4px 4px 12px] w-[320px]">
+        <span class="text-Grayscale500 font-[500] text-[18px]">Đăng ký tài khoản</span>
+        <form class="flex flex-col gap-[12px] w-full" [formGroup]="registerForm">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Tên đăng nhập</mat-label>
+                <input type="text" matInput formControlName="username" >
+                @if (registerForm.controls.username.hasError('required')) {
+                  <mat-error>Không bỏ trống <strong>Tên đăng nhập</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Mật khẩu</mat-label>
+                <input type="password" matInput formControlName="password" >
+                @if (registerForm.controls.password) {
+                  <mat-error>Không bỏ trống <strong>Mật khẩu</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Nhập lại mật khẩu</mat-label>
+                <input type="password" matInput formControlName="confirmPassword" >
+                @if (registerForm.controls.confirmPassword.hasError('required')) {
+                  <mat-error>Không bỏ trống <strong>Nhập lại mật khẩu</strong></mat-error>
+                }
+                @if (registerForm.controls.confirmPassword.hasError('notMatch')) {
+                    <mat-error>Mật khẩu không trùng khớp</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Tên người chơi</mat-label>
+                <input type="text" matInput formControlName="displayName" >
+                @if (registerForm.controls.displayName.hasError('required')) {
+                  <mat-error>Không bỏ trống <strong>Tên người chơi</strong></mat-error>
+                }
+            </mat-form-field>
+            <button mat-raised-button class="bg-Purple120 text-Grayscale50" (click)="onSubmitForm()">Đăng ký</button>
+        </form>
+    </div>
+</div>

@@ -10,8 +10,12 @@ import { BaseComponent } from "@common/base";
 })
 export class GamingComponent extends BaseComponent {
 
+    ngOnInit(): void {
+        this.registerAppStateChanged();
+    }
+
     override registerCoreLayer() {
-        throw new Error("Method not implemented.");
+        
     }
     
 }

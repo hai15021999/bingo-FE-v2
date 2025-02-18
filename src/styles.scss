@@ -1,9 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/variable.scss';
 
+@import './styles/material/themes';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './styles/material/components/mat-button';
+
 
 html {
     background-color: var(--Grayscale50);

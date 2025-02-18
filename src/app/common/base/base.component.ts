@@ -88,11 +88,6 @@ export abstract class BaseComponent {
         this.state.commit(this.appState);
     }
 
-    setCurrentPage(page: 'about-me' | 'portfolio' | 'contact' | 'resume') {
-        this.appState.currentPage = page;
-        this.state.commit(this.appState);
-    }
-
     ngOnDestroy() {
         this.destroy$.next();
         this.destroy$.complete();

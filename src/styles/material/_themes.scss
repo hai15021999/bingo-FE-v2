@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@use './light-theme' as light;
+// @use './dark-theme' as dark;
+
+@include mat.core();
+
+@include mat.core-theme(light.$light-theme);
+@include mat.all-component-themes(light.$light-theme);
+
+// .dark-theme {
+//     @include mat.core-color(dark.$dark-theme);
+//     @include mat.all-component-colors(dark.$dark-theme);
+// }
