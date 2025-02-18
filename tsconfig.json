@@ -34,6 +34,9 @@
       "@common/components": [
         "src/app/common/components/index.ts"
       ],
+      "@common/functions": [
+        "src/app/common/functions/index.ts"
+      ],
       "@common/directives": [
         "src/app/common/directives/index.ts"
       ],

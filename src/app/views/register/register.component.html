@@ -33,7 +33,7 @@
                   <mat-error>Không bỏ trống <strong>Tên người chơi</strong></mat-error>
                 }
             </mat-form-field>
-            <button mat-raised-button class="bg-Purple120 text-Grayscale50" (click)="onSubmitForm()">Đăng ký</button>
+            <button mat-raised-button [disabled]="!registerForm.valid" class="bg-Purple120 text-Grayscale50" (click)="onSubmitForm()">Đăng ký</button>
         </form>
     </div>
 </div>

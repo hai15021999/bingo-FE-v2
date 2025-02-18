@@ -5,7 +5,8 @@ export interface IAppState {
     version: string;
     serverUrl: string;
     screenSize: 'small' | 'large';
-    currentPage: 'about-me' | 'portfolio' | 'contact' | 'resume';
+    accessToken: string;
+    userRoleId: string;
 }
 
 export class AppState {
@@ -13,20 +14,23 @@ export class AppState {
     version: string;
     serverUrl: string;
     screenSize: 'small' | 'large';
-    currentPage: 'about-me' | 'portfolio' | 'contact' | 'resume';
+    accessToken: string = '';
+    userRoleId: string = '';
 
     constructor(
         production = false,
         version = '1.0.0',
         serverUrl = 'http://localhost:4200',
         screenSize: 'small' | 'large' = 'large',
-        currentPage: 'about-me' | 'portfolio' | 'contact' | 'resume' = 'about-me'
+        accessToken = '',
+        userRoleId = ''
     ) {
         this.production = production;
         this.version = version;
         this.serverUrl = serverUrl;
         this.screenSize = screenSize;
-        this.currentPage = currentPage;
+        this.accessToken = accessToken;
+        this.userRoleId = userRoleId;
     }
 }
 
@@ -35,7 +39,8 @@ export class AppStateBuilder {
     private version!: string;
     private serverUrl!: string;
     private screenSize!: 'small' | 'large';
-    private currentPage!: 'about-me' | 'portfolio' | 'contact' | 'resume';
+    private accessToken!: string;
+    private userRoleId!: string;
 
     setProduction(production: boolean) {
         this.production = production;
@@ -57,13 +62,18 @@ export class AppStateBuilder {
         return this;
     }
 
-    setCurrentPage(currentPage: 'about-me' | 'portfolio' | 'contact' | 'resume') {
-        this.currentPage = currentPage;
+    setAccessToken(accessToken: string) {
+        this.accessToken = accessToken;
+        return this;
+    }
+
+    setUserRoleId(userRoleId: string) {
+        this.userRoleId = userRoleId;
         return this;
     }
 
     build() {
-        return new AppState(this.production, this.version, this.serverUrl, this.screenSize, this.currentPage);
+        return new AppState(this.production, this.version, this.serverUrl, this.screenSize, this.accessToken, this.userRoleId);
     }
 }
 
@@ -72,5 +82,6 @@ export const INITIAL_STATE = new AppStateBuilder()
     .setVersion(GLOBAL_SETTINGS.version)
     .setServerUrl(GLOBAL_SETTINGS.serverUrl)
     .setScreenSize('large')
-    .setCurrentPage('about-me')
+    .setAccessToken('')
+    .setUserRoleId(GLOBAL_SETTINGS.userRoleId)
     .build();

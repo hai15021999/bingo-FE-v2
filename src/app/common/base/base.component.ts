@@ -5,6 +5,8 @@ import { Effect, StateService } from '@common/state';
 import { fromEvent, map, merge, of, Subject, takeUntil } from 'rxjs';
 import { MatIconRegistry, SafeResourceUrlWithIconOptions } from '@angular/material/icon';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AppApiService } from '@common/services';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,6 +20,8 @@ export abstract class BaseComponent {
     router = inject(Router);
     iconRegistry = inject(MatIconRegistry);
     domSanitizer = inject(DomSanitizer);
+    apiService = inject(AppApiService);
+    snakbar = inject(MatSnackBar);
 
     destroy$ = new Subject<void>();
     appNetworkState$: Subject<boolean> = new Subject<boolean>();
