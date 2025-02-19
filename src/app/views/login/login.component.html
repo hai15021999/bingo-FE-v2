@@ -1,0 +1,27 @@
+<div class="w-full h-full overflow-auto flex items-center justify-center z-[10] relative">
+    <div class="flex bg-Grayscale150 gap-[12px] flex-col items-center p-[24px] rounded-[12px] shadow-[4px 4px 12px] w-[320px]">
+        <span class="text-Grayscale500 font-[500] text-[18px]">Đăng nhập</span>
+        <form class="flex flex-col gap-[12px] w-full" [formGroup]="loginForm">
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Tên đăng nhập</mat-label>
+                <input type="text" matInput formControlName="username" >
+                @if (loginForm.controls.username.hasError('required')) {
+                  <mat-error class="text-[12px]">Không bỏ trống <strong>Tên đăng nhập</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="w-full" appearance="fill">
+                <mat-label>Mật khẩu</mat-label>
+                <input type="password" matInput formControlName="password" >
+                @if (loginForm.controls.password) {
+                  <mat-error class="text-[12px]">Không bỏ trống <strong>Mật khẩu</strong></mat-error>
+                }
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="onSubmitForm()">Đăng nhập</button>
+        </form>
+        <span class="text-Cobalt100 italic cursor-pointer" (click)="forgotPassword()">Quên mật khẩu?</span>
+        <div class="flex py-[12px] w-full">
+            <div class="h-[1px] w-full bg-Grayscale200"></div>
+        </div>
+        <button mat-flat-button (click)="onRegister()">Tạo tài khoản</button>
+    </div>
+</div>

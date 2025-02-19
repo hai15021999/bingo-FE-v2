@@ -5,8 +5,10 @@ import { Effect, StateService } from '@common/state';
 import { fromEvent, map, merge, of, Subject, takeUntil } from 'rxjs';
 import { MatIconRegistry, SafeResourceUrlWithIconOptions } from '@angular/material/icon';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { AppApiService } from '@common/services';
+import { AppApiService, SnackbarService } from '@common/services';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadingDialogComponent } from '@common/components';
 
 
 @Component({
@@ -22,6 +24,8 @@ export abstract class BaseComponent {
     domSanitizer = inject(DomSanitizer);
     apiService = inject(AppApiService);
     snakbar = inject(MatSnackBar);
+    dialog = inject(MatDialog);
+    snackbarService = inject(SnackbarService);
 
     destroy$ = new Subject<void>();
     appNetworkState$: Subject<boolean> = new Subject<boolean>();
@@ -30,6 +34,24 @@ export abstract class BaseComponent {
     appState: IAppState;
 
     abstract registerCoreLayer(): any;
+
+    loadingDialog = {
+        __componentRef: null as any,
+        open: () => {
+            this.loadingDialog.__componentRef = this.dialog.open(LoadingDialogComponent, {
+                height: '200px',
+                width: '360px',
+                closeOnNavigation: false,
+                disableClose: true
+            });
+        },
+        close: () => {
+            if (this.loadingDialog.__componentRef) {
+                this.loadingDialog.__componentRef.close();
+                this.loadingDialog.__componentRef = null;
+            }
+        }
+    }
 
     constructor() {
         this.appState = this.state.currentState;

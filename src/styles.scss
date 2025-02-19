@@ -8,7 +8,8 @@
 @tailwind utilities;
 
 @import './styles/material/components/mat-button';
-
+@import './styles/material/components/mat-spinner';
+@import './styles/material/components/mat-snackbar';
 
 html {
     background-color: var(--Grayscale50);

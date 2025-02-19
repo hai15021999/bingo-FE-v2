@@ -6,13 +6,11 @@ import { StateService } from '@common/state';
 export function appInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
 
     // example for update request
-    // const state = inject(StateService<IAppState>);
-    // const appState: IAppState = state.currentState;
-    // const clonedRequest = req.clone({
-    //     headers: req.headers
-    //         .set('authorization', `Bearer ${appState.crmAccessToken}`)
-    // });
-    // return next(clonedRequest);
-
-    return next(req);
+    const state = inject(StateService<IAppState>);
+    const appState: IAppState = state.currentState;
+    const clonedRequest = req.clone({
+        headers: req.headers
+            .set('authorization', `Bearer ${appState.accessToken}`)
+    });
+    return next(clonedRequest);
 }
