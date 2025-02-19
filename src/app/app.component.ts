@@ -38,6 +38,18 @@ export class AppComponent extends BaseComponent {
                     this.bindingSnackbarTemplate(res.type, res.message);
                 },
             });
+
+        {
+            const accessToken = localStorage.getItem('accessToken');
+            if ([null, undefined, ''].includes(accessToken)) {
+                if (!['/login', '/register'].includes(this.router.url)) {
+                    this.router.navigate(['/login']);
+                    return;
+                }
+            }
+            this.appState.accessToken = accessToken as string;
+            this.state.commit(this.appState);
+        }
     }
 
     bindingSnackbarTemplate(type: 'info' | 'error' | 'success', message: string) {

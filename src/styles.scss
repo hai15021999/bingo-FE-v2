@@ -11,12 +11,18 @@
 @import './styles/material/components/mat-spinner';
 @import './styles/material/components/mat-snackbar';
 
+@font-face {
+	font-family: 'Gluten';
+	src: url('./assets/fonts/Gluten-VariableFont_slnt\,wght.ttf') format('truetype');
+}
+
 html {
     background-color: var(--Grayscale50);
 }
 html,
 body {
     margin: 0px;
+	font-family: Gluten, "Noto Sans Arabic", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {

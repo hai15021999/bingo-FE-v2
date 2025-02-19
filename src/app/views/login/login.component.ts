@@ -40,6 +40,7 @@ export class LoginComponent extends BaseComponent {
                     this.snackbarService.showSnackbar('Đăng nhập thành công', 'success');
                     this.appState.accessToken = res.accessToken;
                     this.state.commit(this.appState);
+                    localStorage.setItem('accessToken', res.accessToken);
                     this.router.navigate(['/home']);
                 }
             })

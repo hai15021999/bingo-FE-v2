@@ -55,6 +55,9 @@
       "@common/mocks": [
         "src/app/common/mocks/index.ts"
       ],
+      "@common/animations": [
+        "src/app/common/animations/index.ts"
+      ],
       "@app-state": [
         "src/app/app.state.ts"
       ],
