@@ -5,6 +5,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { getExpandCollapseVerticalTrigger } from "@common/animations";
 import { BaseComponent } from "@common/base";
+import { take } from "rxjs";
 
 
 @Component({
@@ -49,6 +50,40 @@ export class HomeComponent extends BaseComponent {
     }
 
     joinRoom() {
+        if (this.roomCode.invalid) {
+            this.snackbarService.showSnackbar('Mã phòng không hợp lệ', 'error');
+            return;
+        }
+        this.loadingDialog.open();
+        this.apiService.joinRoom$(this.roomCode.value as string).pipe(
+            take(1)
+        ).subscribe({
+            next: (res) => {
+                this.loadingDialog.close();
+                if (res.error) {
+                    this.snackbarService.showSnackbar(res.message, 'error');
+                    return;
+                }
+                this.snackbarService.showSnackbar('Tham gia phòng thành công', 'success');
+                this.router.navigate([`/gaming/${this.roomCode.value}`]);
+            }
+        });
+    }
 
+    createRoom() {
+        this.loadingDialog.open();
+        this.apiService.createRoom$().pipe(
+            take(1)
+        ).subscribe({
+            next: (res) => {
+                this.loadingDialog.close();
+                if (res.error) {
+                    this.snackbarService.showSnackbar(res.message, 'error');
+                    return;
+                }
+                this.snackbarService.showSnackbar('Tạo phòng thành công', 'success');
+                this.router.navigate([`/gaming/${res.roomCode}`]);
+            }
+        });
     }
 }

@@ -62,12 +62,15 @@ export class AppComponent extends BaseComponent {
         }
         if (type === 'error') {
             this.snackbar.openFromComponent(SnackbarErrorComponent, config);
+            return;
         }
         if (type === 'info') {
             this.snackbar.openFromComponent(SnackbarInfoComponent, config);
+            return;
         }
         if (type === 'success') {
             this.snackbar.openFromComponent(SnackbarSuccessComponent, config);
+            return;
         }
     }
 }

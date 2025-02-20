@@ -14,7 +14,7 @@ export const routes: Routes = [
         loadComponent: () => (import('./views/home/home.component').then((m) => m.HomeComponent))
     },
     {
-        path: 'gaming',
+        path: 'gaming/:roomCode',
         loadComponent: () => (import('./views/gaming/gaming.component').then((m) => m.GamingComponent))
     },
     {
