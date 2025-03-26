@@ -145,7 +145,10 @@ export class AppApiService {
     }
 
     validateMessageErrorResponse(err: any): string {
-        if (err.error) {
+        if (err.status === 0) {
+            return 'Máy chủ không phản hồi';
+        }
+        if (err.error && err.error.message) {
             return this.validateMessageErrorResponse(err.error);
         }
         if (err.message) {

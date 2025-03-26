@@ -1,0 +1,23 @@
+<div class="flex flex-col w-full h-full relative">
+    <div class="flex h-[120px] w-full justify-between text-Grayscale50">
+        <div class="flex flex-col items-center justify-center py-[24px] px-[32px] w-[20%]">
+            <span class="text-[2.6rem] font-bold">{{ roomInfo?.players?.length || 0 }}</span>
+            <span class="text-[1.2rem] font-semibold">Chú báo</span>
+        </div>
+        <div class="flex h-[120px] w-[52%] items-center justify-center">
+            <span class="text-[3.5rem] font-bold">LÔ TÔ</span>
+        </div>
+        <div class="flex flex-col items-center justify-center py-[24px] px-[32px] w-[20%]">
+            <span class="text-[2.6rem] font-bold">{{ roomCode }}</span>
+            <span class="text-[1.2rem] font-semibold">Mã phòng</span>
+        </div>
+    </div>
+    <div class="flex flex-col gap-[18px] p-[18px] w-full h-[calc(100%-120px)] items-center text-Grayscale50">
+        <span class="text-[1.6rem] font-semibold">Danh sách chờ</span>
+        <div class="flex flex-col gap-[12px]">
+            @for (item of roomInfo?.players; track $index) {
+                <span class="text-[1.2rem] font-semibold">{{ item.displayName }}</span>
+            }
+        </div>
+    </div>
+</div>

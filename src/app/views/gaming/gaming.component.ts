@@ -17,6 +17,8 @@ export class GamingComponent extends BaseComponent {
 
     isDataLoaded = false;
     roomCode = '';
+    roomInfo: any = {}
+    userInfo: any = {};
 
     ngOnInit(): void {
         this.roomCode = this.route.snapshot.paramMap.get('roomCode') ?? '';
@@ -32,12 +34,12 @@ export class GamingComponent extends BaseComponent {
         {
             forkJoin([this.getUserInfo$(), this.apiService.getRoomInfo$(this.roomCode)]).pipe(take(2)).subscribe({
                 next: ([userInfo, roomInfo]) => {
-                    
+                    this.roomInfo = roomInfo;
+                    this.userInfo = userInfo;
                     this.isDataLoaded = true;
                 }
             })
         }
-        
     }
 
     getUserInfo$() {
